@@ -1,8 +1,6 @@
-'use client';
-
 export default function Footer() {
   return (
-    <footer className="py-10 text-center text-xs text-black/50 dark:text-white/40">
+    <footer className="bg-[var(--color-primary)] text-[var(--color-text)] py-5 text-center text-xs">
       © {new Date().getFullYear()} Emil Wardana. All rights reserved.
     </footer>
   );

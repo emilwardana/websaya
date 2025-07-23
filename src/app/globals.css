@@ -1,24 +1,53 @@
 @import "tailwindcss";
 
-/* Theme tokens */
+/* Light theme tokens */
 @theme {
-  --color-cream: #FFF1CA;
-  --color-sun:   #FFB823;
-  --color-sage:  #708A58;
-  --color-forest:#2D4F2B;
+  --color-primary: #222831; /* header/hero/footer bg */
+  --color-secondary: #393e46; /* surfaces */
+  --color-accent: #ffb823; /* buttons/highlights (warm pop) */
+  --color-text: #949391; /* light text on dark blocks */
+  --color-body: #f5f1ea; /* page background */
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-press);
 }
 
-/* Dark mode overrides (class strategy) */
+/* Dark mode tokens (flip body + keep same primary strip) */
 .dark {
-  --color-cream: #0f0f0f;
-  --color-sun:   #FFB823; /* keep accent */
-  --color-sage:  #8fbf94;
-  --color-forest:#1c2e1f;
+  --color-primary: #222831;
+  --color-secondary: #2f343b;
+  --color-accent: #ffb823;
+  --color-text: #a1947f;
+  --color-body: #ffffff;
 }
 
-/* helpers */
-.font-display { font-family: var(--font-display); }
-.font-sans    { font-family: var(--font-sans); }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-body);
+  color: var(--color-primary);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Utility button */
+@utility btn {
+  @apply inline-block rounded px-6 py-3 font-semibold shadow transition;
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+@utility btn-hover {
+  @apply hover:shadow-lg hover:opacity-90;
+}
+
+/* Section padding helper */
+.section {
+  @apply mx-auto max-w-6xl px-6 py-20;
+}

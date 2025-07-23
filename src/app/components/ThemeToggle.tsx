@@ -1,26 +1,20 @@
-'use client';
-
-import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { Moon, Sun } from 'lucide-react'; // optional: npm i lucide-react
+"use client";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-
-  const current = theme === 'system' ? systemTheme : theme;
-
+  const current = theme === "system" ? systemTheme : theme;
   return (
-    <motion.button
-      whileTap={{ scale: 0.9 }}
-      onClick={() => setTheme(current === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10 transition"
+    <button
       aria-label="Toggle theme"
+      onClick={() => setTheme(current === "dark" ? "light" : "dark")}
+      className="rounded p-2 text-[var(--color-text)]/70 hover:bg-white/10 hover:text-[var(--color-text)] transition"
     >
-      {current === 'dark' ? <Sun size={18}/> : <Moon size={18}/>}
-    </motion.button>
+      {current === "dark" ? "☀️" : "🌙"}
+    </button>
   );
 }
