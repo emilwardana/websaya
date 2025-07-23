@@ -10,19 +10,11 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="font-display text-4xl md:text-5xl"
       >
-        Build Your Next Project
+        Emil Wardana
       </motion.h1>
       <p className="mt-4 text-sm md:text-base opacity-80">
-        Modern stack: Next.js • Tailwind • TypeScript
+        QA Engineer Web Developer
       </p>
-      <motion.a
-        href="#features"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="btn btn-hover mt-10"
-      >
-        Get Started
-      </motion.a>
     </section>
   );
 }

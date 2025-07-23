@@ -1,28 +1,58 @@
+// src/app/layout.tsx
 import "./globals.css";
+
 import type { ReactNode } from "react";
-import { Inter, Press_Start_2P } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter, Space_Grotesk, Press_Start_2P } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import CommandPalette from "./components/CommandPalette"; // remove if you don't have it
+
+// ---- Fonts ----
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 const press = Press_Start_2P({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-press",
 });
 
-export const metadata = {
+// ---- SEO / Meta ----
+export const metadata: Metadata = {
   title: "Emil Wardana",
-  description: "Personal web – Playground & Digital Garden",
+  description: "Personal web • Playground & Digital Garden",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${press.variable} font-sans antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex min-h-screen flex-col">{children}</div>
+    <html
+      lang="en"
+      className={`${inter.variable} ${display.variable} ${press.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="antialiased font-sans">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Page shell */}
+          <div className="flex min-h-screen flex-col bg-[var(--color-bg)] text-[var(--color-text)]">
+            <Navbar />
+
+            <main className="flex-1">{children}</main>
+
+            <Footer />
+          </div>
+
+          {/* Mount once so it's available everywhere */}
+          <CommandPalette />
         </ThemeProvider>
       </body>
     </html>
