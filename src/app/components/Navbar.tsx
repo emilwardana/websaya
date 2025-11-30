@@ -7,10 +7,10 @@ import CommandPalette from "./CommandPalette";
 
 export default function Navbar() {
   return (
-    <header className="bg-[var(--color-primary)] text-[var(--color-text)]">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link href="/" className="font-display text-xl">
-          notUsual
+    <header className="sticky top-0 z-50 bg-[var(--color-surface)] text-[var(--color-primary)] border-b-4 border-[var(--color-primary)]">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link href="/" className="font-display text-2xl font-black uppercase tracking-tighter hover:text-[var(--color-accent)] transition-colors">
+          MynotUsualSite
         </Link>
 
         <div className="flex items-center gap-4">

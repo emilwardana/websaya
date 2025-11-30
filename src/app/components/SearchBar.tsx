@@ -75,9 +75,9 @@ export default function SearchBar() {
   return (
     <div ref={boxRef} className="relative w-64">
       {/* Right-side icon + shortcut pill */}
-      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-60">
+      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-100">
         <Search className="h-4 w-4" />
-        <kbd className="hidden sm:inline rounded bg-white/10 px-1.5 py-0.5 text-[10px]">
+        <kbd className="hidden sm:inline bg-[var(--color-primary)] text-[var(--color-surface)] px-1.5 py-0.5 text-[10px] font-bold">
           {shortcut}
         </kbd>
       </div>
@@ -90,29 +90,29 @@ export default function SearchBar() {
         }}
         onFocus={() => setOpen(true)}
         placeholder="Search…"
-        className="w-full rounded-full bg-[var(--color-secondary)]/30 pl-4 pr-20 py-2 text-sm
-                   text-[var(--color-text)] placeholder:text-[var(--color-text)]/50
-                   focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+        className="w-full border-2 border-[var(--color-primary)] bg-[var(--color-surface)] pl-4 pr-20 py-2 text-sm font-bold
+                   text-[var(--color-primary)] placeholder:text-[var(--color-primary)]/50
+                   focus:outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-shadow"
       />
 
       {open && results.length > 0 && (
         <ul
-          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-60 overflow-y-auto rounded-xl
-                       bg-[var(--color-secondary)]/90 backdrop-blur text-sm shadow-lg"
+          className="absolute left-0 right-0 top-full z-50 mt-2 max-h-60 overflow-y-auto
+                       bg-[var(--color-surface)] border-2 border-[var(--color-primary)] text-sm shadow-[4px_4px_0px_0px_var(--color-primary)]"
         >
           {results.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block px-3 py-2 text-[var(--color-text)] hover:bg-[var(--color-accent)]/20"
+                className="block px-3 py-2 text-[var(--color-primary)] hover:bg-[var(--color-accent)] border-b border-[var(--color-primary)] last:border-0"
                 onClick={() => {
                   setOpen(false);
                   setQ("");
                 }}
               >
-                <span className="font-medium">{item.title}</span>
+                <span className="font-bold uppercase">{item.title}</span>
                 {item.desc && (
-                  <span className="block opacity-70 text-xs">{item.desc}</span>
+                  <span className="block opacity-80 text-xs font-medium">{item.desc}</span>
                 )}
               </Link>
             </li>

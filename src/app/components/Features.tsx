@@ -27,15 +27,18 @@ export default function Features() {
           <Link
             key={c.title}
             href={c.href}
-            className="rounded-xl border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/10 dark:bg-[var(--color-secondary)]/30 
-                       p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 
-                       focus:ring-[var(--color-accent)] cursor-pointer"
+            className="border-2 border-[var(--color-primary)] bg-[var(--color-surface)] 
+                       p-8 text-center shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all 
+                       hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_var(--color-primary)] 
+                       focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] cursor-pointer"
           >
-            <div className="mb-3 text-4xl">{c.emoji}</div>
-            <h3 className="font-display text-lg text-[var(--color-primary)] dark:text-[var(--color-text)]">
+            <div className="mb-4 text-5xl grayscale hover:grayscale-0 transition-all">{c.emoji}</div>
+            <h3 className="font-display text-xl font-black uppercase text-[var(--color-primary)]">
               {c.title}
             </h3>
-            <p className="mt-2 text-sm opacity-70">{c.desc}</p>
+            <p className="mt-2 text-sm font-medium opacity-100 border-t-2 border-[var(--color-primary)] pt-2 inline-block">
+              {c.desc}
+            </p>
           </Link>
         ))}
       </div>

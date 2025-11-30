@@ -63,43 +63,43 @@ export default function CommandPalette() {
         onClick={() => setOpen(false)}
       >
         <div
-          className="w-full max-w-lg overflow-hidden rounded-2xl bg-[var(--color-secondary)]/90 text-[var(--color-text)] shadow-2xl"
+          className="w-full max-w-lg overflow-hidden border-4 border-[var(--color-primary)] bg-[var(--color-surface)] text-[var(--color-primary)] shadow-[8px_8px_0px_0px_var(--color-primary)]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* header */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
-            <Search className="h-4 w-4 opacity-60" />
+          <div className="flex items-center gap-2 px-4 py-3 border-b-4 border-[var(--color-primary)]">
+            <Search className="h-5 w-5" />
             <input
               ref={inputRef}
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Type to search…"
-              className="flex-1 bg-transparent text-sm outline-none placeholder:text-[var(--color-text)]/50"
+              className="flex-1 bg-transparent text-base font-bold outline-none placeholder:text-[var(--color-primary)]/50"
             />
             <button
               aria-label="Close"
               onClick={() => setOpen(false)}
-              className="rounded p-1 opacity-60 hover:opacity-100"
+              className="p-1 hover:bg-[var(--color-accent)] border-2 border-transparent hover:border-[var(--color-primary)] transition-all"
             >
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </button>
           </div>
 
           {/* results */}
           <ul className="max-h-80 overflow-y-auto py-2 text-sm">
             {results.length === 0 && (
-              <li className="px-4 py-3 opacity-60">No results</li>
+              <li className="px-4 py-3 opacity-60 font-bold">No results</li>
             )}
             {results.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-4 py-3 hover:bg-[var(--color-accent)]/20 transition"
+                  className="block px-4 py-3 hover:bg-[var(--color-accent)] hover:translate-x-1 transition-transform border-b-2 border-transparent hover:border-[var(--color-primary)]"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-black text-lg uppercase">{item.title}</span>
                   {item.desc && (
-                    <span className="block text-xs opacity-70">
+                    <span className="block text-xs font-medium opacity-80">
                       {item.desc}
                     </span>
                   )}
@@ -109,8 +109,8 @@ export default function CommandPalette() {
           </ul>
 
           {/* hint bar */}
-          <div className="flex justify-end gap-2 border-t border-white/10 px-4 py-2 text-[10px] opacity-60">
-            <kbd className="rounded bg-white/10 px-1.5 py-0.5">ESC</kbd> close
+          <div className="flex justify-end gap-2 border-t-4 border-[var(--color-primary)] px-4 py-2 text-[10px] font-bold uppercase tracking-widest opacity-80">
+            <kbd className="bg-[var(--color-primary)] text-[var(--color-surface)] px-1.5 py-0.5">ESC</kbd> close
           </div>
         </div>
       </div>

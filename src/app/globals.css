@@ -1,24 +1,30 @@
 @import "tailwindcss";
 
-/* Light theme tokens */
+/* Neobrutalism tokens */
 @theme {
-  --color-primary: #222831; /* header/hero/footer bg */
-  --color-secondary: #393e46; /* surfaces */
-  --color-accent: #ffb823; /* buttons/highlights (warm pop) */
-  --color-text: #949391; /* light text on dark blocks */
-  --color-body: #f5f1ea; /* page background */
+  --color-primary: #000000; /* Main text / borders */
+  --color-secondary: #ffffff; /* Surfaces */
+  --color-accent: #ffb823; /* Vibrant yellow */
+  --color-accent-hover: #e5a51f;
+  --color-body: #e0e7ff; /* Light blue-ish grey or just plain color */
+  --color-surface: #ffffff;
 
   --font-sans: var(--font-inter);
-  --font-display: var(--font-press);
+  --font-display: var(--font-display);
+
+  --shadow-neo: 4px 4px 0px 0px #000000;
+  --shadow-neo-sm: 2px 2px 0px 0px #000000;
+  --shadow-neo-lg: 8px 8px 0px 0px #000000;
 }
 
-/* Dark mode tokens (flip body + keep same primary strip) */
+/* Dark mode - Neobrutalism can be inverted or stay high contrast */
 .dark {
-  --color-primary: #222831;
-  --color-secondary: #2f343b;
+  --color-primary: #ffffff;
+  --color-secondary: #000000;
   --color-accent: #ffb823;
-  --color-text: #a1947f;
-  --color-body: #ffffff;
+  --color-body: #1a1a1a;
+  --color-surface: #2a2a2a;
+  --shadow-neo: 4px 4px 0px 0px #ffffff;
 }
 
 html {
@@ -28,23 +34,39 @@ html {
 body {
   background: var(--color-body);
   color: var(--color-primary);
-}
-
-.font-display {
-  font-family: var(--font-display);
-}
-.font-sans {
   font-family: var(--font-sans);
 }
 
-/* Utility button */
-@utility btn {
-  @apply inline-block rounded px-6 py-3 font-semibold shadow transition;
-  background: var(--color-accent);
-  color: var(--color-primary);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
-@utility btn-hover {
-  @apply hover:shadow-lg hover:opacity-90;
+
+/* Utility button */
+/* Utility button */
+.btn {
+  @apply inline-block px-6 py-3 font-bold transition-all border-2 border-primary bg-accent text-primary;
+  box-shadow: var(--shadow-neo);
+
+  &:hover {
+    @apply translate-x-[2px] translate-y-[2px];
+    box-shadow: 2px 2px 0px 0px var(--color-primary);
+  }
+
+  &:active {
+    @apply translate-x-[4px] translate-y-[4px] shadow-none;
+  }
+}
+
+/* Card utility */
+.card {
+  @apply border-2 border-primary bg-surface p-6;
+  box-shadow: var(--shadow-neo);
 }
 
 /* Section padding helper */
