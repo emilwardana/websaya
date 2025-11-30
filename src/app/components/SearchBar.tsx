@@ -73,7 +73,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div ref={boxRef} className="relative w-64">
+    <div ref={boxRef} className="relative w-full md:w-64">
       {/* Right-side icon + shortcut pill */}
       <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-100">
         <Search className="h-4 w-4" />

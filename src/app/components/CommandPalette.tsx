@@ -32,7 +32,7 @@ export default function CommandPalette() {
       .slice(0, 10);
   }, [q, fuse]);
 
-  // open on ⌘K / Ctrl+K
+  // open on ⌘K / Ctrl+K or custom event
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
@@ -41,8 +41,16 @@ export default function CommandPalette() {
       }
       if (e.key === "Escape") setOpen(false);
     };
+    
+    const openHandler = () => setOpen(true);
+
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    window.addEventListener("open-cmd-palette", openHandler);
+    
+    return () => {
+      window.removeEventListener("keydown", handler);
+      window.removeEventListener("open-cmd-palette", openHandler);
+    };
   }, []);
 
   // focus input when opened

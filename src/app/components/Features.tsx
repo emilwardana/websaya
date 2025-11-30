@@ -22,13 +22,13 @@ const cards = [
 export default function Features() {
   return (
     <Section id="features">
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0">
         {cards.map((c) => (
           <Link
             key={c.title}
             href={c.href}
             className="border-2 border-[var(--color-primary)] bg-[var(--color-surface)] 
-                       p-8 text-center shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all 
+                       p-6 md:p-8 text-center shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all 
                        hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_var(--color-primary)] 
                        focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] cursor-pointer"
           >
