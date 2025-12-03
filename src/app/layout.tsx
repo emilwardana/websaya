@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="flex min-h-screen flex-col bg-[var(--color-body)] text-[var(--color-primary)] font-sans selection:bg-[var(--color-accent)] selection:text-black">
             <Navbar />
 
-            <main className="flex-1">{children}</main>
+            <main className="flex flex-col flex-1">{children}</main>
 
             <Footer />
           </div>

@@ -6,7 +6,7 @@ export default function Section({ id, children }: { id?: string; children: React
   return (
     <motion.section
       id={id}
-      className="section bg-[var(--color-body)] text-[var(--color-primary)]"
+      className="section bg-[var(--color-body)] text-[var(--color-primary)] flex-grow flex items-center py-6 md:py-8"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
