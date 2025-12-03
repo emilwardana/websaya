@@ -3,12 +3,47 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import BackButton from "../components/BackButton";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xvgerjne", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
   return (
     <section className="section min-h-screen px-4 md:px-6 py-12 md:py-20">
       <div className="mx-auto max-w-2xl">
-        <BackButton />
+        <div className="mb-6 md:mb-8">
+          <BackButton />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +66,10 @@ export default function ContactPage() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="card"
           >
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              {/* Hidden field for Formspree AJAX compatibility */}
+              <input type="hidden" name="_subject" value="New contact form submission" />
+              
               <div>
                 <label htmlFor="name" className="block text-sm font-bold uppercase mb-1">
                   Name
@@ -39,6 +77,8 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  required
                   className="w-full border-2 border-[var(--color-primary)] bg-[var(--color-body)] p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-shadow"
                   placeholder="YOUR NAME"
                 />
@@ -50,6 +90,8 @@ export default function ContactPage() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  required
                   className="w-full border-2 border-[var(--color-primary)] bg-[var(--color-body)] p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-shadow"
                   placeholder="YOUR@EMAIL.COM"
                 />
@@ -60,13 +102,32 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
+                  required
                   className="w-full border-2 border-[var(--color-primary)] bg-[var(--color-body)] p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_var(--color-primary)] transition-shadow resize-none"
                   placeholder="WHAT'S ON YOUR MIND?"
                 />
               </div>
-              <button type="submit" className="btn w-full text-center uppercase tracking-wider">
-                Send Message
+              
+              {status === "success" && (
+                <div className="p-3 border-2 border-green-600 bg-green-100 text-green-800 font-bold text-sm">
+                  ✓ Message sent successfully!
+                </div>
+              )}
+              
+              {status === "error" && (
+                <div className="p-3 border-2 border-red-600 bg-red-100 text-red-800 font-bold text-sm">
+                  ✗ Failed to send. Please try again.
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                className="btn w-full text-center uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>
@@ -82,7 +143,7 @@ export default function ContactPage() {
               <h3 className="font-display text-xl font-black uppercase mb-4">Connect</h3>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/emilwardana"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn flex items-center justify-center gap-3 bg-white hover:bg-gray-100"
@@ -105,7 +166,7 @@ export default function ContactPage() {
                   X
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/zamilwardana/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn flex items-center justify-center gap-3 bg-[#0077B5] text-white border-black"
