@@ -24,7 +24,7 @@ const cards = [
 export default function Features() {
   return (
     <Section id="features">
-      <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0">
+      <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0 w-full max-w-6xl mx-auto">
         {cards.map((c) => (
           <Link
             key={c.title}

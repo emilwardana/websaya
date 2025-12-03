@@ -47,8 +47,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Navbar />
 
             <main className="flex flex-col flex-1">{children}</main>
-
-            <Footer />
           </div>
 
           {/* Mount once so it's available everywhere */}

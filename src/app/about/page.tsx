@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import BackButton from "../components/BackButton";
+import Footer from "../components/Footer";
 
 export default function AboutPage() {
   const timeline = [
@@ -41,7 +42,8 @@ export default function AboutPage() {
   ];
 
   return (
-    <section className="section min-h-screen px-4 md:px-6 py-12 md:py-20">
+    <>
+    <section className="section flex-1 w-full px-4 md:px-6 py-12 md:py-20">
       <div className="mx-auto max-w-4xl">
         <div className="mb-6 md:mb-8">
           <BackButton />
@@ -148,5 +150,7 @@ export default function AboutPage() {
         </motion.div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 }

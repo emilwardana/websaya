@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import BackButton from "../components/BackButton";
 import { useState } from "react";
+import Footer from "../components/Footer";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -39,7 +40,8 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="section min-h-screen px-4 md:px-6 py-12 md:py-20">
+    <>
+    <section className="section flex-1 w-full px-4 md:px-6 py-12 md:py-20">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6 md:mb-8">
           <BackButton />
@@ -179,5 +181,7 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 }
