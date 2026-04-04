@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/websaya', // Important: must match repo name
-  images: { unoptimized: true }, // GitHub Pages doesn't support Next.js Image Optimization
+  output: "export",
+  basePath: "/websaya",
+  images: { unoptimized: true },
 };
+
 export default nextConfig;
