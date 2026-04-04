@@ -32,7 +32,8 @@ export default function Features() {
             className="border-2 border-[var(--color-primary)] bg-[var(--color-surface)] 
                        p-4 md:p-6 text-center shadow-[4px_4px_0px_0px_var(--color-primary)] transition-all 
                        hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_var(--color-primary)] 
-                       focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] cursor-pointer relative"
+                       focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] cursor-pointer relative
+                       aspect-[4/3] flex flex-col items-center justify-center"
           >
             {c.comingSoon && (
               <span className="absolute top-3 right-3 px-2 py-1 text-xs font-black uppercase bg-[var(--color-accent)] border-2 border-[var(--color-primary)] shadow-[2px_2px_0px_0px_var(--color-primary)]">
