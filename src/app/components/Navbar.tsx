@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[var(--color-surface)] text-[var(--color-primary)] border-b-4 border-[var(--color-primary)]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 py-2 md:py-3">
         <Link href="/" className="font-display text-lg md:text-2xl font-black uppercase tracking-tighter hover:text-[var(--color-accent)] transition-colors truncate max-w-[200px] md:max-w-none">
-          MynotUsualPersonalSite
+          WebSaya
         </Link>
 
         <div className="flex items-center gap-4">
